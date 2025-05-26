@@ -4,7 +4,6 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=10,chrome=1">
 		<title>TimeDropper-Ex</title>
-		<!--link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css" />
 		<link rel="stylesheet" type="text/css" href="src/timedropper.slate.css" /-->
 		<link rel="stylesheet" type="text/css" href="src/timedropper.css" />
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
@@ -12,21 +11,54 @@
 		<script type="text/javascript" src="src/timedropper.js"></script>
 		<script type="text/javascript" src="src/timedropper.lang.js"></script>
 		<style type="text/css">
+		body {
+			position: relative;
+			margin: 0;
+			padding: 1em;
+		}
 		#wrapper
 		{
 			max-width:800px;
 			margin:0 auto;
-            font-family:Tahoma,Verdana,sans-serif;
+			font-family:Tahoma,Verdana,sans-serif;
 			line-height:1.5;
 			font-size:14px;
 		}
 		.demo { margin:30px 20px 0 0; }
-		button { color:black !important; }
 		pre
 		{
 			font-size:12px;
-			background:#eee;
 			padding:0.5em;
+			border-width: 1pt;
+			border-style: solid;
+		}
+		@media (prefers-color-scheme: dark) {
+			html,
+			body {
+				color: powderblue;
+				background-color: darkslategray;
+				scrollbar-color: teal darkslategray;
+			}
+			a {
+				color: cadetblue;
+			}
+			a:hover {
+				color: deepskyblue;
+			}
+		}
+		@media (prefers-color-scheme: light) {
+			html,
+			body {
+				color: darkslategrey;
+				background-color: aliceblue;
+				scrollbar-color: powderblue azure;
+			}
+			a {
+				color: teal;
+			}
+			a:hover {
+				color: darkslateblue;
+			}
 		}
 		</style>
 	</head>
@@ -56,35 +88,25 @@
 				Supports multi-language, you can choose a pre-defined language or set it to auto-detect mode. <br>
 				You can also define new languages, refer to <a href="src/timedropper.lang.js">the translations module</a> for example.
 			</p>
-			<p>
-				Easily customizeable colors and style to adopt to arbitrary theme. <br>
-				Refer to <a href="src/timedropper.slate.delta.css">the "Slate" delta CSS</a> for example.
-			</p>
 			<p><span style="padding:0.5em;border:1px solid grey;border-radius:1em">
 				Interested in interactive date (range) entry? Checkout <a href="https://adam5wu.github.io/DateRange-Picker-Ex/">DateRange-Picker-Ex</a>.
 			</span></p>
 			<p><span style="padding:0.5em;border:1px solid grey;border-radius:1em">
 				Interested in comprehensive datetime range entry? Checkout <a href="https://adam5wu.github.io/DateTimeRanger/">DateTimeRanger</a>.
 			</span></p>
-            <h2 id="installation">Installation</h2>
+			<h2 id="installation">Installation</h2>
 <pre>
 &lt;link rel="stylesheet" type="text/css" href="dist/timedropper.min.css" />
-&lt;!-- Optional "Slate" color theme -->
-&lt;link rel="stylesheet" type="text/css" href="dist/timedropper.slate.delta.min.css" />
 &lt;script type="text/javascript" src="jquery.min.js">&lt;/script>
 &lt;script type="text/javascript" src="moment.min.js">&lt;/script>
 &lt;script type="text/javascript" src="dist/timedropper.min.js">&lt;/script>
 &lt;script type="text/javascript" src="dist/timedropper.lang.min.js">&lt;/script>
 </pre>
-            <h2 id="demonstrations">Demonstrations</h2>
-			<div>
-				<button id="add-slate">Use Slate Color Theme</button>
-				<button id="remove-slate">Remove Slate Color Theme</button>
-			</div>
+			<h2 id="demonstrations">Demonstrations</h2>
 			<div class="demo" style="display:inline-block;vertical-align:top">
 			Inline, input reactive<br>
 			<input type="text" id="clock1" />
-			<div id="loc-clock1" style="border:1px dashed darkgray;line-height:0"></div>
+			<div id="loc-clock1" style="border:1px dashed darkgray;line-height:0;background-color:silver;text-align:center"></div>
 			</div>
 			<div class="demo" style="display:inline-block;vertical-align:top">
 			Fade, English, from 10:10 AM<br>
@@ -96,13 +118,6 @@
 			</div>
 		</div>
 <script>
-$('#add-slate').click(function () {
-	$('head').append('<link rel="stylesheet" type="text/css" href="https://bootswatch.com/slate/bootstrap.min.css">');
-	$('head').append('<link rel="stylesheet" type="text/css" href="src/timedropper.slate.delta.css" />');
-});
-$('#remove-slate').click(function () {
-	$('link[rel=stylesheet][href*="slate"]').remove();
-});
 $("#clock1").timeDropper({
 	animation: 'fade',
 	inline: true,
